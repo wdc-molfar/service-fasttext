@@ -1,0 +1,29 @@
+{
+  "name": "service-fasttext",
+  "version": "1.0.0",
+  "description": "@molfar fasttext service",
+  "main": "service.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wdc-molfar/service-fasttext.git"
+  },
+  "keywords": [
+    "fasttext",
+    "mqrabbit"
+  ],
+  "author": "Artem Soboliev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wdc-molfar/service-fasttext/issues"
+  },
+  "homepage": "https://github.com/wdc-molfar/service-fasttext#readme",
+  "dependencies": {
+    "@molfar/service-chassis": "github:wdc-molfar/service-chassis",
+    "fasttext.js": "github:boldak/fasttext.js",
+    "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21"
+  }
+}

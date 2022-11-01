@@ -1,0 +1,139 @@
+msapi: "1.0.1"
+
+metadata: 
+    id: "@molfar/service-fasttext"
+    title: "@molfar source service fasttext" 
+
+
+components:
+    schemas:
+        INPUT:
+            type: object
+            
+            required:
+                - schedule
+                - scraper
+            
+            properties:
+                
+                schedule:
+                    type: object
+                    required:
+                        - id
+                        - source
+                        - activatedAt
+                    properties:
+                        id:
+                            type: string
+                        source: 
+                            type: string
+                        activatedAt: 
+                            type: string
+                            format: date-time
+                    additionalProperties: true
+                
+                scraper:
+                    type: object
+                    required: 
+                        - scanany
+                    properties:
+                        scanany:
+                            type: object                    
+                            required:
+                                - name
+                                - script
+                                - params
+                            properties:
+                                name:
+                                    type: string
+                                script: 
+                                    type: string
+                                params:
+                                    type: string            
+                            additionalProperties: true
+                    additionalProperties: true
+            additionalProperties: true  
+        OUTPUT:
+            type: object
+            
+            required:
+                - schedule
+                - scraper
+                - fasttext
+            
+            properties:
+                fasttext:
+                    type: object
+
+                schedule:
+                    type: object
+                    required:
+                        - id
+                        - source
+                        - activatedAt
+                    properties:
+                        id:
+                            type: string
+                        source: 
+                            type: string
+                        activatedAt: 
+                            type: object
+                            # format: date-time
+                    additionalProperties: true
+                
+                scraper:
+                    type: object
+                    required: 
+                        - scanany
+                    properties:
+                        scanany:
+                            type: object                    
+                            required:
+                                - name
+                                - script
+                                - params
+                            properties:
+                                name:
+                                    type: string
+                                script: 
+                                    type: string
+                                params:
+                                    type: string            
+                            additionalProperties: true
+                    additionalProperties: true
+            additionalProperties: true                            
+
+  
+
+service:
+
+    # The scheduler will recive message from
+    consume:
+        
+        amqp:
+            url: "amqps://xoilebqg:Nx46t4t9cxQ2M0rF2rIyZPS_xbAhmJIG@hornet.rmq.cloudamqp.com/xoilebqg"
+        
+        exchange:
+            name: fasttext
+            mode: direct
+
+        # Schema of generated messages
+        message:
+            $ref: "#/components/schemas/INPUT"
+    # The scheduler will send a message to
+    produce:
+        
+        amqp:
+            url: "amqps://xoilebqg:Nx46t4t9cxQ2M0rF2rIyZPS_xbAhmJIG@hornet.rmq.cloudamqp.com/xoilebqg"
+        
+        exchange:
+            name: fasttext
+            mode: direct
+
+        # Schema of generated messages
+        message:
+            $ref: "#/components/schemas/OUTPUT"
+
+
+
+    
