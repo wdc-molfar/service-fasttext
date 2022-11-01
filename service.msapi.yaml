@@ -109,17 +109,23 @@ service:
 
     # The scheduler will recive message from
     consume:
-        
-        amqp:
+        amqp: 
             url: "amqps://xoilebqg:Nx46t4t9cxQ2M0rF2rIyZPS_xbAhmJIG@hornet.rmq.cloudamqp.com/xoilebqg"
         
-        exchange:
-            name: fasttext
-            mode: direct
+        queue:
+            name: lang-detector
+            exchange:
+                name: lang-detector
+                mode: fanout
+                options:
+                    durable: true
+                    persistent: true
+            options:
+                noAck: false 
+                exclusive: false   
 
-        # Schema of generated messages
         message:
-            $ref: "#/components/schemas/INPUT"
+            $ref: "#/components/schemas/INPUT"    
     # The scheduler will send a message to
     produce:
         
@@ -128,8 +134,11 @@ service:
         
         exchange:
             name: fasttext
-            mode: direct
-
+            mode: fanout
+            options:
+                durable: true
+                persistent: true
+        
         # Schema of generated messages
         message:
             $ref: "#/components/schemas/OUTPUT"
