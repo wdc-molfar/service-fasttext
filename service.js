@@ -1,4 +1,5 @@
 const { ServiceWrapper, AmqpManager, Middlewares } = require("@molfar/service-chassis")
+const { extend } = require("lodash")
 const path = require("path")
 
 let service = new ServiceWrapper({

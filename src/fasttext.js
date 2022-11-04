@@ -31,7 +31,7 @@ const execute = async (message) => {
 	let result = await fasttext[methodMaps[fasttextCommand].query](message.text)
 	return result;
 }
-//node_modules/fasttext.js/lib/bin/linux/fasttext
+
 let initialize = async () => {
         fasttextCommand = config.fasttextCommand
 		let loadModel= path.resolve(config.modelUrl)

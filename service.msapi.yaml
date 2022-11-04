@@ -36,21 +36,15 @@ components:
                 scraper:
                     type: object
                     required: 
-                        - scanany
+                        - message
                     properties:
-                        scanany:
+                        message:
                             type: object                    
                             required:
-                                - name
-                                - script
-                                - params
+                                - text
                             properties:
-                                name:
-                                    type: string
-                                script: 
-                                    type: string
-                                params:
-                                    type: string            
+                                text:
+                                    type: string         
                             additionalProperties: true
                     additionalProperties: true
 
@@ -101,21 +95,15 @@ components:
                 scraper:
                     type: object
                     required: 
-                        - scanany
+                        - message
                     properties:
-                        scanany:
+                        message:
                             type: object                    
                             required:
-                                - name
-                                - script
-                                - params
+                                - text
                             properties:
-                                name:
-                                    type: string
-                                script: 
-                                    type: string
-                                params:
-                                    type: string            
+                                text:
+                                    type: string         
                             additionalProperties: true
                     additionalProperties: true
             additionalProperties: true                            
