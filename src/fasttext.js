@@ -31,12 +31,12 @@ const execute = async (message) => {
 	let result = await fasttext[methodMaps[fasttextCommand].query](message.text)
 	return result;
 }
-
+//node_modules/fasttext.js/lib/bin/linux/fasttext
 let initialize = async () => {
         fasttextCommand = config.fasttextCommand
 		let loadModel= path.resolve(config.modelUrl)
 		let options = _.extend({loadModel}, methodMaps[fasttextCommand].options)
-		console.log(options) 
+		//console.log(options) 
 		fasttext = new FastText(options);
 		
 		console.log(`Load model ${JSON.stringify(options, null," ")} by ${methodMaps[fasttextCommand].load} method`)

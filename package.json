@@ -22,7 +22,7 @@
   "homepage": "https://github.com/wdc-molfar/service-fasttext#readme",
   "dependencies": {
     "@molfar/service-chassis": "github:wdc-molfar/service-chassis",
-    "fasttext.js": "github:boldak/fasttext.js",
+    "fasttext.js": "github:wdc-molfar/fasttext.js",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
   },
