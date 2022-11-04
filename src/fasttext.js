@@ -27,30 +27,16 @@ let methodMaps = {
 	 }
 }
 
-const execute = async message => {
-    if(fasttext){
-		let result = await fasttext[methodMaps[fasttextCommand].query](message)
-		return  {
-            response:{
-                data: result,
-                status:"success"
-            }
-        }
-	} else {
-        return  {
-            response:{
-				message:"error in initilisation fasttext",
-				status:"error"
-			}	
-        }
-	}
+const execute = async (message) => {
+	let result = await fasttext[methodMaps[fasttextCommand].query](message.text)
+	return result;
 }
 
 let initialize = async () => {
-        fasttextCommand = config.service.fasttextCommand
-		let loadModel= path.resolve(config.service.fasttext.models.path) 
+        fasttextCommand = config.fasttextCommand
+		let loadModel= path.resolve(config.modelUrl)
 		let options = _.extend({loadModel}, methodMaps[fasttextCommand].options)
-		
+		console.log(options) 
 		fasttext = new FastText(options);
 		
 		console.log(`Load model ${JSON.stringify(options, null," ")} by ${methodMaps[fasttextCommand].load} method`)
@@ -61,8 +47,8 @@ let initialize = async () => {
 
 module.exports =  conf => {
 	config = conf
-    initialize
 	return {
+		initialize,
 		execute
 	}	 
 }

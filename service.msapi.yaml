@@ -13,6 +13,7 @@ components:
             required:
                 - schedule
                 - scraper
+                - langDetector
             
             properties:
                 
@@ -52,6 +53,22 @@ components:
                                     type: string            
                             additionalProperties: true
                     additionalProperties: true
+
+                langDetector:
+                    type: object
+                    required: 
+                        - language
+                    properties:
+                         language:
+                            type: object                    
+                            required:
+                                - locale
+                            properties:
+                                locale:
+                                    type: string  
+                            additionalProperties: true
+                    additionalProperties: true
+
             additionalProperties: true  
         OUTPUT:
             type: object
@@ -106,7 +123,11 @@ components:
   
 
 service:
-
+    fasttext:
+        fasttextCommand: "print-sentence-vectors"
+        lang: "ru"
+        repo: "https://github.com/wdc-molfar/service-fasttext.git"
+        modelUrl: "/home/adm1n/Загрузки/ag_news.bin"
     # The scheduler will recive message from
     consume:
         amqp: 

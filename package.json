@@ -25,5 +25,11 @@
     "fasttext.js": "github:boldak/fasttext.js",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
+  },
+  "fasttext": {
+    "lang": "ru",
+    "repo": "https://github.com/wdc-molfar/service-fasttext.git",
+    "modelUrl": "https://drive.google.com/u/0/uc?id=1LnjYOiMylQt3OcNPL3J2EFkfHCC0rQzL&export=download&confirm=t",
+    "fasttextCommand": "print-sentence-vectors"
   }
 }
